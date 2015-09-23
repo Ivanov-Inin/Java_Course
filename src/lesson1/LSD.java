@@ -52,26 +52,15 @@ public class LSD {
 			{
 				count[k + 1] += count[k];
 			}
-			if (i == W-1) 
-			{
-                int shift1 = count[r] - count[r / 2];
-                int shift2 = count[r / 2];
-                for (int k = 0; k < r / 2; k++)
-                {
-                	count[k] += shift1;
-                }
-                for (int k = r / 2; k < r; k++)
-                {
-                	count[k] -= shift2;
-                }
-            }
 			for(int l = 0; l < n; l++)								//move data
 			{
 				int c = (data[l] >> 8 * i) & mask;
 				arr[count[c]++] = data[i];
 			}
 			for (int l = 0; l < n; l++)								//copy back
+			{
 				 data[l] = arr[l];
+			}
 		}
 	}
 
